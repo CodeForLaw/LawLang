@@ -1,0 +1,14 @@
+
+<Noun> = "\"" .+ "\""
+<Other> = <Name> ( ":" <Name> )
+
+<Refer> = "規定in(" <Other> ")" 
+<Subject> = "(" <Noun> <Refer>? | (("or"|"and") <Noun> <Refer>? )+ ")"
+<Abbreviate> = "(" <Subject> "->" Noun ")"
+<S> = <Subject> | <Abbreviate>
+
+<Article> = <S>
+		".define(" <Verb>  ")" # 定義
+		".can(" <Verb>  ")"    # 可能
+		".should(" <Verb>  ")" # 義務
+
